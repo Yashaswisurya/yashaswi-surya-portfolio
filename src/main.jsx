@@ -1,0 +1,29 @@
+import React from "react";
+import {createRoot} from "react-dom/client";
+import "./styles.css";
+
+const cases=[
+ {id:"cellbay",client:"Cellbay",period:"2023–2025",tag:"Growth • Retail • Performance",headline:"Built a digital growth engine for a 50+ store retail network.",metrics:["1.8K → 52K Instagram followers","200+ DMs/day for 1+ year","4M+ & 6.5M+ organic reels"],desc:"Rebuilt the social presence, introduced influencer-led product campaigns, connected content to store sales and expanded performance marketing."},
+ {id:"kapil-chits",client:"Kapil Chits Karnataka",period:"2025",tag:"Meta Ads • Conversions",headline:"Generated ₹2.8 Cr in conversions in three months.",metrics:["₹2.8 Cr conversions","3 Meta campaigns","0 → 500 followers"],desc:"Built and optimized conversion campaigns around lead quality, offer positioning and audience targeting."},
+ {id:"hmtv",client:"HMTV",period:"2025",tag:"YouTube • Operations",headline:"Scaled YouTube revenue while managing a large content operation.",metrics:["$500 → $5,000 revenue","20+ editors managed","8 channels / 6K videos monthly"],desc:"Created content segregation and production workflows across news, entertainment, live, movies and sports teams."},
+ {id:"hans-india",client:"The Hans India",period:"2024–2025",tag:"Organic Growth • YouTube",headline:"Grew social and YouTube revenue without paid media.",metrics:["20K Instagram followers","$0 → $3K YouTube revenue","12K YouTube subscribers"],desc:"Used consistent editorial strategy, content optimization and organic distribution to build audience and monetization."},
+ {id:"orchards",client:"Orchards",period:"2024–2025",tag:"Lead Generation • Real Estate",headline:"Turned short-form content into a high-volume lead channel.",metrics:["~300 → 3,700 followers","7,000+ leads","₹45K/month spend"],desc:"Combined video-led content with paid acquisition to generate measurable real-estate leads."},
+ {id:"aduri",client:"Aduri Group",period:"2024–2025",tag:"Meta Ads • Real Estate",headline:"Generated qualified interest across three Hyderabad locations.",metrics:["3 campaigns","3 locations","300+ leads"],desc:"Set up location-focused campaigns for Shadnagar, Gachibowli and Jubilee Hills."},
+ {id:"onshorekare",client:"Onshorekare",period:"2024",tag:"Travel Insurance • Meta",headline:"Expanded a travel insurance brand's North American social audience.",metrics:["700+ follower growth","USA-focused targeting","Meta campaign management"],desc:"Developed social campaigns for international travellers and a US-based audience."},
+ {id:"kapil-hmtv",client:"Selected Campaign Work",period:"2023–2025",tag:"Campaign Strategy",headline:"A cross-client view of performance, content and acquisition work.",metrics:["Meta • Google • YouTube","Organic + paid","Strategy + execution"],desc:"A curated view of campaign systems, content operations and measurable business outcomes."}
+];
+
+function App(){
+ const [active,setActive]=React.useState(null);
+ return <div className="site">
+  <nav><div className="brand">YS<span>.</span></div><div className="navlinks"><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></div></nav>
+  <header className="hero"><p className="eyebrow">DIGITAL MARKETING • GROWTH • CONTENT</p><h1>I build marketing systems that turn attention into <em>business results.</em></h1><p className="intro">Digital Marketing Manager with 4+ years of experience across paid acquisition, social growth, YouTube monetization, content operations and client campaigns.</p><div className="actions"><a className="button" href="#work">View case studies ↓</a><a className="textlink" href="#contact">Let's talk →</a></div></header>
+  <section className="proof"><div><strong>₹2.8 Cr</strong><span>Conversions generated</span></div><div><strong>1.8K → 52K</strong><span>Instagram growth</span></div><div><strong>$500 → $5K</strong><span>YouTube revenue</span></div><div><strong>7,000+</strong><span>Leads generated</span></div></section>
+  <section id="work" className="section"><div className="sectionhead"><p className="eyebrow">SELECTED WORK</p><h2>Case studies built around the numbers.</h2></div><div className="grid">{cases.map(c=><article className="card" key={c.id} onClick={()=>setActive(c)}><div className="cardtop"><span>{c.tag}</span><span>{c.period}</span></div><h3>{c.client}</h3><h4>{c.headline}</h4><div className="metrics">{c.metrics.map(m=><p key={m}>{m}</p>)}</div><button>Read case study →</button></article>)}</div></section>
+  <section id="about" className="about section"><div><p className="eyebrow">ABOUT</p><h2>Strategy, execution and measurement in one workflow.</h2></div><p>I work across the full digital marketing loop — from positioning and content strategy to paid campaigns, organic growth, reporting and team operations. This portfolio focuses on documented outcomes, the systems behind them and what changed after each intervention.</p></section>
+  <section id="contact" className="contact section"><p className="eyebrow">CONTACT</p><h2>Have a growth problem worth solving?</h2><p>Let's connect and talk through the objective, audience and numbers.</p><a className="button" href="mailto:hello@yashaswisurya.com">Get in touch →</a></section>
+  <footer>© 2026 Yashaswi Surya · Digital Marketing Portfolio</footer>
+  {active&&<div className="modal" onClick={()=>setActive(null)}><div className="modalbox" onClick={e=>e.stopPropagation()}><button className="close" onClick={()=>setActive(null)}>×</button><p className="eyebrow">{active.tag}</p><h2>{active.client}</h2><h3>{active.headline}</h3><p>{active.desc}</p><div className="modalmetrics">{active.metrics.map(m=><div key={m}>{m}</div>)}</div><p className="note">Full case study assets, campaign screenshots and methodology will be added here next.</p></div></div>}
+ </div>
+}
+createRoot(document.getElementById("root")).render(<App/>);
